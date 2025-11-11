@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: ecommdb
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: santiago
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: simple_ecommerce
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    
+
+volumes:
+  db-data:
