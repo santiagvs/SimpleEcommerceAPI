@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace SimpleEcommerce.Application.Features.Auth.Commands;
+namespace SimpleEcommerce.Application.Features.Auth.Commands.Register;
 
 public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {

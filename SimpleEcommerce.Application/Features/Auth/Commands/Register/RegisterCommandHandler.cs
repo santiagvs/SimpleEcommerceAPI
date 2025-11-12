@@ -1,18 +1,21 @@
-using MediatR;
+using Mediator;
 using SimpleEcommerce.Domain.Common;
 using SimpleEcommerce.Domain.Entities;
 using SimpleEcommerce.Domain.Interfaces;
 using SimpleEcommerce.Domain.ValueObjects;
 using SimpleEcommerce.Domain.Abstractions.Security;
 
-namespace SimpleEcommerce.Application.Features.Auth.Commands;
+namespace SimpleEcommerce.Application.Features.Auth.Commands.Register;
 
-public class RegisterCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher) : IRequestHandler<RegisterCommand, Guid>
+public class RegisterCommandHandler(
+    IUserRepository userRepository,
+    IPasswordHasher passwordHasher
+) : ICommandHandler<RegisterCommand, Guid>
 {
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IPasswordHasher _passwordHasher = passwordHasher;
 
-    public async Task<Guid> Handle(RegisterCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Guid> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         if (await _userRepository.ExistsByEmailAsync(request.Email))
             throw new DomainException("E-mail already exists");

@@ -1,10 +1,11 @@
-using MediatR;
 
-namespace SimpleEcommerce.Application.Features.Auth.Commands;
+using Mediator;
+
+namespace SimpleEcommerce.Application.Features.Auth.Commands.Register;
 
 public record RegisterCommand(
     string Email,
     string Password,
     string FirstName,
     string LastName
-) : IRequest<Guid>;
+) : ICommand<Guid>;

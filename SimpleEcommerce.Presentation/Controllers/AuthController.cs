@@ -1,6 +1,7 @@
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
-using SimpleEcommerce.Application.Features.Auth.Commands;
+using SimpleEcommerce.Application.Features.Auth.Commands.Login;
+using SimpleEcommerce.Application.Features.Auth.Commands.Register;
 
 namespace SimpleEcommerce.Presentation.Controllers;
 

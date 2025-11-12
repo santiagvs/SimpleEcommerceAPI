@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SimpleEcommerce.Application;
+using SimpleEcommerce.Application.Features.Auth.Commands.Register;
 using SimpleEcommerce.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -63,6 +64,12 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddMediator(options =>
+{
+    options.ServiceLifetime = ServiceLifetime.Scoped;
+    options.Assemblies = [typeof(RegisterCommand)];
+});
 
 var app = builder.Build();
 
