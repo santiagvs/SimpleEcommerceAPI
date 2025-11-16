@@ -2,9 +2,7 @@ using SimpleEcommerce.Domain.Entities;
 
 namespace SimpleEcommerce.Domain.Interfaces;
 
-public interface IProductRepository
+public interface IProductRepository : IRepository<Product>
 {
-    Task AddAsync(Product product);
-    Task<Product?> GetByIdAsync(Guid id);
     Task<bool> ExistsBySkuAsync(string sku);
 }

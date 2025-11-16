@@ -34,6 +34,9 @@ public static class DependencyInjection
         services.AddSingleton<IJwtTokenGenerator, JwtService>();
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IBrandRepository, BrandRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
 
         return services;
     }
