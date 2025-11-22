@@ -1,9 +1,9 @@
 using Mediator;
-using SimpleEcommerce.Domain.Common;
 using SimpleEcommerce.Domain.Entities;
 using SimpleEcommerce.Domain.Interfaces;
 using SimpleEcommerce.Domain.ValueObjects;
 using SimpleEcommerce.Domain.Abstractions.Security;
+using SimpleEcommerce.Domain.Common.Exceptions;
 
 namespace SimpleEcommerce.Application.Features.Auth.Commands.Register;
 

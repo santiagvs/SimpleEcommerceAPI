@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using SimpleEcommerce.Application;
 using SimpleEcommerce.Application.Features.Auth.Commands.Register;
 using SimpleEcommerce.Infrastructure;
+using SimpleEcommerce.Presentation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,6 +73,8 @@ builder.Services.AddMediator(options =>
 });
 
 var app = builder.Build();
+
+app.UseGlobalExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {

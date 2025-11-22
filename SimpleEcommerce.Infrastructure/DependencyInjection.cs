@@ -1,4 +1,5 @@
 using Dapper;
+using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleEcommerce.Application.Abstractions.Auth;
@@ -26,7 +27,7 @@ public static class DependencyInjection
         {
             SqlMapper.AddTypeHandler(new EmailTypeHandler());
             SqlMapper.AddTypeHandler(new PasswordTypeHandler());
-            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
             _dapperConfigured = true;
         }
 
@@ -37,6 +38,14 @@ public static class DependencyInjection
         services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
+
+        services.AddFluentMigratorCore()
+            .ConfigureRunner(rb => rb
+                .AddPostgres()
+                .WithGlobalConnectionString(cs)
+                .ScanIn(typeof(SimpleEcommerce.Infrastructure.Migrations.CreateUsers).Assembly)
+                .For.Migrations())
+            .AddLogging(lb => lb.AddFluentMigratorConsole());
 
         return services;
     }

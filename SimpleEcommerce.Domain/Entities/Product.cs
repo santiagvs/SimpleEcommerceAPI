@@ -1,4 +1,5 @@
 using SimpleEcommerce.Domain.Common;
+using SimpleEcommerce.Domain.Common.Exceptions;
 using SimpleEcommerce.Domain.ValueObjects;
 
 namespace SimpleEcommerce.Domain.Entities;

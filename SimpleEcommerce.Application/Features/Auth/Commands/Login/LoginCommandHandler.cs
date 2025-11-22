@@ -1,8 +1,8 @@
 using Mediator;
-using SimpleEcommerce.Domain.Common;
 using SimpleEcommerce.Domain.Interfaces;
 using SimpleEcommerce.Domain.Abstractions.Security;
 using SimpleEcommerce.Application.Abstractions.Auth;
+using SimpleEcommerce.Domain.Common.Exceptions;
 
 namespace SimpleEcommerce.Application.Features.Auth.Commands.Login;
 
@@ -18,7 +18,7 @@ public class LoginCommandHandler(
 
     public async ValueTask<string> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByEmailAsync(request.Email) 
+        var user = await _userRepository.GetByEmailAsync(request.Email)
             ?? throw new DomainException("Invalid credentials");
 
         var ok = user.Password.Verify(request.Password, _passwordHasher);

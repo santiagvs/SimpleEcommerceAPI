@@ -1,5 +1,5 @@
 using Mediator;
-using SimpleEcommerce.Domain.Common;
+using SimpleEcommerce.Domain.Common.Exceptions;
 using SimpleEcommerce.Domain.Entities;
 using SimpleEcommerce.Domain.Interfaces;
 using SimpleEcommerce.Domain.ValueObjects;

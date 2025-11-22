@@ -1,5 +1,5 @@
 using SimpleEcommerce.Domain.Abstractions.Security;
-using SimpleEcommerce.Domain.Common;
+using SimpleEcommerce.Domain.Common.Exceptions;
 
 namespace SimpleEcommerce.Domain.ValueObjects;
 
